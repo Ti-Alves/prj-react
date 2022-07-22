@@ -3,20 +3,19 @@ import { searchPokemon } from "../PokeAPI";
 
 const Searchbar = (props) => {
   const [search, setSearch] = useState("ditto");
-  const [pokemon, setPokemon] = useState();
+  const { onSearch } = props;
 
   const onChangeHandler = (e) => {
-    console.log("Pokémon: ", e.target.value);
     setSearch(e.target.value);
+
+    if(e.target.value.length === 0) {
+      onSearch(undefined);
+    }
+
   };
 
   const onButtonClickHandler = () => {
-    onSearchHandler(search);
-  };
-
-  const onSearchHandler = async (pokemon) => {
-    const result = await searchPokemon(pokemon);
-    setPokemon(result);
+    onSearch(search);
   };
 
   return (
@@ -29,15 +28,9 @@ const Searchbar = (props) => {
           className="searchbar-input"
         />
         <button className="searchbar-btn" onClick={onButtonClickHandler}>
-          🔎
+          Buscar
         </button>
-        {pokemon ? 
-        <div>
-          <div>Nome: {pokemon.name}</div>
-          <div>Peso: {pokemon.weight}</div>
-          <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-        </div> 
-        : null}
+        
       </div>
     </>
   );

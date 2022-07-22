@@ -48,10 +48,76 @@
   padding: 10px;
 }
 
-.pokedex-grid{
+.pokedex-grid {
   display: grid;
   gap: 10px;
   grid-template-columns: repeat(3, 1fr);
+}
+
+.pokemon-card {
+  display: flex;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+}
+
+.pokemon-card-sprite {
+  width: 70px;
+  height: 70px;
+  margin: 0 5px;
+  margin-right: 10px;
+}
+
+.pokemon-card-sprite {
+  width: 70px;
+  height: 70px;
+  margin-right: 10px;
+}
+
+.pokemon-card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px 10px 10px 0;
+  flex: 1;
+}
+
+.pokemon-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pokemon-card-name {
+  text-transform: capitalize;
+}
+
+.pokemon-card-bot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pokemon-card-typing {
+  display: flex;
+}
+
+.pokemon-typing-text {
+  margin-right: 10px;
+  text-transform: capitalize;
+}
+
+.pokemon-fav-btn {
+  border: none;
+  background-color: white;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.25);
+  padding: 4px;
+  cursor: pointer;
+}
+
+.not-found-text {
+  text-align: center;
+  font-size: 1.25rem;
+  padding: 20px;
 }
 
 .App {
