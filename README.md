@@ -1,3 +1,15 @@
+# ReactDex
+
+## Objetivo:
+
+Este projeto é uma pokédex usando o React como biblioteca juntamente a PokeAPI para receber os dados usados.
+
+## Funções:
+
+Temos aqui as funções de listagem, busca e favoritar, com um contador de favoritos.
+
+-----------------------
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
