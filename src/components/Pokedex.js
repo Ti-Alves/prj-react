@@ -32,7 +32,6 @@ const Pokedex = (props) => {
         <div>Carregando, aguarde...</div>
       ) : (
         <>
-          {/* <h1>Carregado!</h1> */}
           <div className="pokedex-grid">
             {pokemonList &&
               pokemonList.map((pokemon, index) => {

@@ -12,7 +12,7 @@ const Pokemon = (props) => {
   return (
     <div className="pokemon-card">
       <div className="pokemon-card-sprite">
-        <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+        <img className="pokemon-sprite-img" src={pokemon.sprites.front_default} alt={pokemon.name} />
       </div>
       <div className="pokemon-card-body">
         <div className="pokemon-card-top">

@@ -3,6 +3,12 @@
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: rgb(24, 24, 24);
+  color: white;
 }
 
 .nav {
@@ -12,8 +18,12 @@
   justify-content: space-evenly;
 }
 
-.nav-img {
+/* .nav-img {
   width: 8vw;
+} */
+
+.nav-name {
+  
 }
 
 .searchbar-div {
@@ -33,7 +43,7 @@
 }
 
 .searchbar-btn {
-  background-color: rgb(255, 0, 0);
+  background-color: rgba(220,10,45,255);
   border: none;
   border-radius: 10px;
   height: 50px;
@@ -50,27 +60,46 @@
 
 .pokedex-grid {
   display: grid;
-  gap: 10px;
-  grid-template-columns: repeat(3, 1fr);
+  gap: 2vw;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 2vw;
+  align-items: center;
+  justify-content: center;
 }
 
 .pokemon-card {
   display: flex;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 3px;
+  border: 1px solid gray;
+  border-radius: 100px;
+  padding: 0 15px 0 0;
+}
+
+.pokemon-card:hover {
+  transition: all .5s ease-in-out;
+  border: 1px solid rgba(220,10,45,255);
+  box-shadow: 4px 4px 4px rgba(220,10,45,0.25);
 }
 
 .pokemon-card-sprite {
-  width: 70px;
-  height: 70px;
+  width: 150px;
+  height: 80px;
   margin: 0 5px;
   margin-right: 10px;
+  margin-left: 0;
+  border-radius: 0 50px 50px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+  background-color: rgb(53, 53, 53);
+  box-shadow: 4px 4px 0 rgba(73, 73, 73, 0.25);
 }
 
-.pokemon-card-sprite {
-  width: 70px;
-  height: 70px;
-  margin-right: 10px;
+.pokemon-sprite-img {
+  width: 80px;
+  height: 80px;
 }
 
 .pokemon-card-body {
@@ -108,10 +137,13 @@
 
 .pokemon-fav-btn {
   border: none;
-  background-color: white;
+  background: none;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.25);
-  padding: 4px;
   cursor: pointer;
+  font-size: 15px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
 }
 
 .not-found-text {
@@ -122,4 +154,48 @@
 
 .App {
   text-align: center;
+}
+
+
+.content {
+  display: flex;
+}
+
+.sidebar-wrapper {
+  position:fixed;
+  top:0;
+  left:-20%; 
+  height:100%;
+  width: 25%;
+  background-color: rgba(220,10,45,255);
+  border-radius: 0 35px 35px 0 / 0 100px 100px 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  transition: all .5s ease-in-out;
+}
+
+.sidebar-wrapper:hover {
+  left: -18%;
+}
+
+.sidebar-wrapper.open {
+  left: 0;
+}
+
+.sidebar-arrow {
+  margin: 10px;
+  color: white;
+  font-size: 30px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 25%;
+  cursor: pointer;
+}
+
+.main {
+  width: 100%;
+  margin-left: 5vw;
 }

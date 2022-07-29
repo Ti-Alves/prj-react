@@ -11,7 +11,8 @@ const Navbar = () => {
     <>
       <nav className="nav">
         <div>
-          <img src={logoScr} alt="PokeAPI" className="nav-img" />
+          {/* <img src={logoScr} alt="PokeAPI" className="nav-img" /> */}
+          <p className="nav-name"> ReactDex </p>
         </div>
         <div>
           {favPokemon.length} ❤️

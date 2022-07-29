@@ -5,6 +5,8 @@ import Navbar from "./components/Navbar";
 import Searchbar from "./components/Searchbar";
 import Pokedex from "./components/Pokedex";
 
+import Sidebar from "./components/Sidebar";
+
 import { getAllPokemon, getPokemonData, searchPokemon } from "./PokeAPI";
 import { FavoriteProvider } from "./contexts/favoritesContext";
 
@@ -18,12 +20,12 @@ function App() {
   const [totalPages, setTotalPages] = useState(0);
   const [favorites, setFavorites] = useState([]);
 
-  const itemsPerPage = 25;
+  const itemsPerPage = 150;
 
   const fetchPokemon = async () => {
     try {
       setLoading(true);
-      setNotFound(false)
+      setNotFound(false);
       const data = await getAllPokemon(itemsPerPage, itemsPerPage * page);
       const promises = data.results.map(async (pokemon) => {
         return await getPokemonData(pokemon.url);
@@ -40,9 +42,10 @@ function App() {
   };
 
   const loadFavPokemon = () => {
-    const pokemonList = JSON.parse(window.localStorage.getItem(favoritesKey)) || [];
+    const pokemonList =
+      JSON.parse(window.localStorage.getItem(favoritesKey)) || [];
     setFavorites(pokemonList);
-  }
+  };
 
   useEffect(() => {
     loadFavPokemon();
@@ -66,7 +69,7 @@ function App() {
   };
 
   const onSearchHandler = async (pokemon) => {
-    if(!pokemon) {
+    if (!pokemon) {
       return fetchPokemon();
     }
 
@@ -75,17 +78,31 @@ function App() {
 
     const result = await searchPokemon(pokemon);
 
-    if(!result) {
+    if (!result) {
       setNotFound(true);
-    }
-    else {
+    } else {
       setPokemonList([result]);
       setPage(0);
       setTotalPages(1);
     }
 
-    setLoading(false)
-  }
+    setLoading(false);
+  };
+
+
+  //  const sidebar = Sidebar();
+
+  //   const handleSidebarIn = () => {
+  //       sidebar.classList.add('open');
+  //   }
+
+  //   const handleSidebarOut = () => {
+  //       sidebar.classList.remove('open');
+  //   }
+
+  //   const handleSidebarClick = () => {
+  //       sidebar.classList.contains('open') ? handleSidebarOut() : handleSidebarIn();
+  //   }
 
   return (
     <FavoriteProvider
@@ -95,22 +112,25 @@ function App() {
       }}
     >
       <>
-        <Navbar />
-        <Searchbar
-        onSearch={onSearchHandler} />
-        {notFound ? 
-        <div className="not-found-text">
-          Pokémon não encontrado
-        </div> 
-        : null}
-        <Pokedex
-          pokemonList={pokemonList}
-          loading={loading}
-          page={page}
-          setPage={setPage}
-          totalPages={totalPages}
-        />
-        <div className="App"></div>
+        <div className="content">
+          <Sidebar />
+
+          <div className="main">
+            <Navbar />
+            <Searchbar onSearch={onSearchHandler} />
+            {notFound ? (
+              <div className="not-found-text">Pokémon não encontrado</div>
+            ) : null}
+            <Pokedex
+              pokemonList={pokemonList}
+              loading={loading}
+              page={page}
+              setPage={setPage}
+              totalPages={totalPages}
+            />
+            <div className="App"></div>
+          </div>
+        </div>
       </>
     </FavoriteProvider>
   );
